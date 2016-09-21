@@ -1,4 +1,7 @@
 # R code to run analysis for data --  logistic regression model 
+
+%logistic regression model with random effects, predicting whether or not a kid gets each trial right in the letter classification task.
+%(classification right/wrong for a particular letter) <- (kid’s age) + (mean time to draw all letters) + (item random effect) + (subject random effect)
 # Takes in CSV file with following from classification task:
 #Name, Subj #, Age, Draw time total(secs), Letters drew total, char#, condition #, then all animal/letters and if they got it right/not as T/F
 #Name	Subj #	Age	Draw Total time	letters drew	char num	Condition	Animal_1	Animal_2	Animal_3	Animal_4	Animal_5	Letter_1	Letter_2	Letter_3	Letter_4	Letter_5	Letter_6	Letter_7	Letter_8	Letter_9	Letter_10
