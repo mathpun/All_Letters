@@ -10,3 +10,9 @@ itrain = imread('Brendens_image.png')
 ML8 = flipud(itset)
 itest = imrotate(ML8, 270)
 itest = imresize(itest, [105,105])
+
+
+%Now run HD_change(itest,itrain)
+% To see the images overlapped try:
+% A = imfuse(itest,itrain)
+% imshow(A)
