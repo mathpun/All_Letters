@@ -1,0 +1,22 @@
+%This is matlab
+%Takes in XY coordinates from Drawcopy output and converts to binary matrix 
+
+load('Michael_18_L8.png')
+
+Michael_L8 = imread('Michael_18_L8.png');
+test = Michael_L8;
+
+test =  round(test / 510 * 105 );
+
+plot(test(1:end, 1), test(1:end, 2))
+
+
+other_format = false(105, 105); %Create large matrix of set to false
+
+%See values to 1 where drawing happened
+
+for  i = 1:length(test)
+   other_format(test(i,1), test(i,2))= 1 ;
+end
+
+image(other_format)
