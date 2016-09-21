@@ -1,0 +1,12 @@
+%Matlab
+% If you have 2 images that you want to run the "HD_change" code on, you need to get them to be binary and same size 
+% This code allows you to read in the image you want to comare
+% ALl of BL's letters that we are comparing to are [105,105] matrix so we want ours to be the same size
+% Our images are also flipped when they come out of Drawcopy so we need to flip them 
+% HD_change takes in itest and itrain 
+
+itest = imread('yourimage.png')
+itrain = imread('Brendens_image.png')
+ML8 = flipud(itset)
+itest = imrotate(ML8, 270)
+itest = imresize(itest, [105,105])
