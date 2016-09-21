@@ -1,0 +1,28 @@
+# R code to run analysis for data --  logistic regression model 
+# Takes in CSV file with following from classification task:
+#Name, Subj #, Age, Draw time total(secs), Letters drew total, char#, condition #, then all animal/letters and if they got it right/not as T/F
+#Name	Subj #	Age	Draw Total time	letters drew	char num	Condition	Animal_1	Animal_2	Animal_3	Animal_4	Animal_5	Letter_1	Letter_2	Letter_3	Letter_4	Letter_5	Letter_6	Letter_7	Letter_8	Letter_9	Letter_10
+#Michael	18	5.373626374	191.89	9	2	3	T	T	T	T	T	T	T	T	T	T	T	T	T	T	T
+#Michael	18	5.373626374	191.89	9	3	3	T	T	T	T	T	T	T	T	T	T	T	T	T	T	T
+#Michael	18	5.373626374	191.89	9	4	3	T	T	T	T	T	T	T	T	T	T	T	T	T	T	T
+
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(lme4)
+
+setwd("~/../cocosci/Dropbox (MIT)/LETTERS_JBT/")
+
+data <- read.csv("JBT_Anova_data_Pilot.csv") %>% tbl_df
+
+#  (classification right/wrong for a particular letter)
+#  <- (kid’s age) + (mean time to draw all letters) + (item random effect) 
+#  + (subject random effect)
+
+data <- data %>% gather(ClassificationTrial,Answer,Animal_1:Letter_10)
+
+data$char.num <- factor(data$char.num)
+
+MyModel <- glmer(Answer ~ Age + Draw.Total.time + (1|Name) + (1|char.num), family="binomial",data=data)
+
+summary(MyModel)
